@@ -1,0 +1,19 @@
+# Inference configuration for 250cm run
+# Run with: python inference.py inference_config_250cm.yaml
+# Update checkpoint epoch and input raster path as needed
+
+checkpoint: C:/Cloud/OneDrive/13_Projects/140_Smaller_Projects/1411_NHR/3_Test_Run/run_03/chkpnts/epoch_50
+
+model:
+  encoder: resnet18
+  weights: imagenet
+  normalize: false   # data already normalised to [0,1] - must match training config
+  classes: 20
+
+data:
+  img: C:/Cloud/OneDrive/13_Projects/140_Smaller_Projects/1411_NHR/0_Data/250cm/HT_features.tif
+  out: C:/Cloud/OneDrive/13_Projects/140_Smaller_Projects/1411_NHR/3_Test_Run/run_03/HT_prediction.tif
+
+tile_size:  128    # must match tile size used during training
+overlap:    0.25
+batch_size: 16     # can use larger batches at 128px
